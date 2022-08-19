@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background: #FFFDE3;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+.mainCard
+{
+    position: relative;
+    height: 90vh;
+    width : 95%;
+    left: 2.5%;
+    top: 5vh;
+    border-radius: 5vh;
+    background-color: #CFE8A9;
+    display: flex;
+    flex-direction: column;
+    gap:5vh;
+}
+
+.card
+{
+    background: #224B0C;
+    position: relative;
+    height: 15vh;
+    width: 80%;
+    left: 10%;
+    top:22.5vh;
+    border-radius: 5vh;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 5vw;
+    color: #F5E8C7;
+    text-align: center;
+    padding-top:5vh;
+}
+
+.card:hover
+{
+    background-color: #59CE8F;
+}
+
+.playground
+{
+    display : flex;
+    gap: 6vw;
+
+}
+
+.userSelection{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap:10vh;
+    height : 80vh;
+    left: 2.5%;
+    top: 5vh;
+    width: 30%;
+    border-radius: 5vh;
+    background: #224B0C;
+
+}
+
+.display{
+    position: relative;
+    height : 80vh;
+    top: 5vh;
+    width: 60%;
+    border-radius: 5vh;
+    background: #224B0C;
+}
+
+.slider {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    height: 0;
+    display: flex;
+    align-items: center;
+    }
+    .slider p {
+    font-size: 3vh;
+    font-weight: 400;
+    font-family: 'Lato', sans-serif;
+    padding-left: 3vw;
+    color: white;
+    }
+    .slider input[type="range"] {
+    -webkit-appearance:none !important;
+    width: 60%;
+    height: 2px;
+    background: #A3B1E1;
+    border: none;
+    outline: none;
+    }
+    .slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    width: 2vh;
+    height:2vh;
+    border: 2px solid #CFE8A9;
+    background: #CFE8A9;
+    border-radius: 50%;
+    cursor: pointer;
+    }
