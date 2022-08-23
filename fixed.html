@@ -4,17 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="mainCard">
         <div class="playground">
             <div class="userSelection">
-                <div class="slider">
-                    <input type="range" min="0" max="100" value="100" oninput="rangeValue.innerText = this.value">
-                    <p id="rangeValue">100</p>
+                <div class="slider length-value">
+                    <input type="range" id="beamLength" min="1" max="100" value="0" oninput=handleWidthSlider(this)>
+                    <input type="number" id="beamLengthVal" value="0" min="1" max="100" class="slider-value" oninput=handleWidthInput(this)>
+                    <br>
+                    <input type="submit" value="Submit" id="beamSubmit">
                 </div>
+                <div class="slider length-value">
+                    <input type="range" id="pointLoadDist" disabled min="0" max="100" value="0" oninput=handlePDistSlider(this)>
+                    <input type="number" id="pointLoadDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handlePDistInput(this)>
+                    <br>
+                    <input type="range" id="pointLoad" disabled min="0" max="80" value="0" oninput=handlePLoadSlider(this)>
+                    <input type="number" id="pointLoadVal" disabled value="0" min="0" max="80" class="slider-value" oninput=handlePLoadInput(this)>
+                    <br>
+                    <input type="submit" value="Submit" id="pointLoadSubmit">
+                </div>
+                <div class="slider point-load-value">
+                    <input type="range" id="udl" disabled min="0" max="100" value="0" oninput=handlePDistSlider(this)>
+                    <input type="number" id="udlVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handlePDistInput(this)>
+                    <br>
+                    <input type="range" id="udlMinDist" disabled min="1" max="80" value="1" oninput=handlePLoadSlider(this)>
+                    <input type="number" id="udlMinDistVal" disabled value="1" min="1" max="80" class="slider-value" oninput=handlePLoadInput(this)>
+                    <br>
+                    <input type="range" id="udlMaxDist" disabled min="1" max="80" value="1" oninput=handlePLoadSlider(this)>
+                    <input type="number" id="udlMaxDistVal" disabled value="1" min="1" max="80" class="slider-value" oninput=handlePLoadInput(this)>
+                    <br>
+                    <input type="submit" value="Submit" id="pointLoadSubmit">
+                </div>
+                <!-- <input type="submit" value="Submit"> -->
+
+                
                 <!-- <div class="slider">
                     <input type="range" min="0" max="100" value="100" oninput="rangeValue.innerText = this.value">
                     <p id="rangeValue">100</p>
@@ -22,10 +48,17 @@
 
             </div>
             <div class="display">
-                
+                <div class="simulation">
+                    <img src="/images/wall1.png" alt="wall" class="wall">
+                    <img src="/images/arrowline.png" hidden alt="line" class="line" id="line">
+                    <img src="/images/arrowpointer.svg" hidden alt="pointer" class="pointer" id="pointer">
+                    <img src="/images/arrowpointercont.png" hidden alt="pointercont" class="pointercont" id="pointercont">
+                    <img src="/images/beam.png" alt="beam" class="beam" id="beam">
+                </div>
             </div>
         </div>
     </div>
-    
+    <script src="simulation.js"></script>
+    <script src="calculationfixed.js"></script>
 </body>
 </html>

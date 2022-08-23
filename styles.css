@@ -56,11 +56,11 @@ a
 }
 
 .userSelection{
+    padding-top: 5vh;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap:10vh;
-    height : 80vh;
+    height : 75vh;
     left: 2.5%;
     top: 5vh;
     width: 30%;
@@ -80,25 +80,29 @@ a
 
 .slider {
     position: relative;
-    top: 50%;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
     left: 50%;
-    transform: translate(-50%,-50%);
-    width: 60%;
-    height: 0;
-    display: flex;
+    transform: translateX(-40%);
+    width: 80%;
+    height: auto;
+    display: inline-block;
     align-items: center;
+    justify-content: center;
     }
     .slider p {
     font-size: 3vh;
     font-weight: 400;
     font-family: 'Lato', sans-serif;
-    padding-left: 3vw;
+    padding-left: 1vw;
     color: white;
     }
     .slider input[type="range"] {
     -webkit-appearance:none !important;
     width: 60%;
-    height: 2px;
+    height: 1.5px;
     background: #A3B1E1;
     border: none;
     outline: none;
@@ -112,3 +116,73 @@ a
     border-radius: 50%;
     cursor: pointer;
     }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.slider-value {
+    display: border-box;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    width: 3rem;
+    text-align: center;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    background: white;
+    border: 2px white solid;
+    border-radius: 0.5rem;
+}
+
+.slider-value::selection {
+    background:#59CE8F;
+    color: white;
+}
+
+.simulation {
+    background: white;
+    height: 30vh;
+    width: 94%;
+    margin-top: 3vh;
+    margin-left: 3%;
+    border-radius: 3vh;
+}
+
+.wall {
+    margin-left: 20px;
+    top: 0;
+    height: 100%;
+    aspect-ratio: auto;
+}
+
+.beam {
+    position: absolute;
+    margin-left: -40px;
+    top: 20%;
+    height: 2.5vh;
+    width: 40px;
+}
+
+.pointer {
+    position: absolute;
+    width: 20px;
+    margin-left: -10px;
+    top: calc(20% - 1.25vh);
+}
+
+.line {
+    position: absolute;
+    width: 0.5px;
+    margin-left: px;
+    height: 0px;
+    bottom: calc(80%);
+}
+
+.pointercont {
+    position: absolute;
+    height: 15px;
+    width: 500px;
+    object-fit: fill;
+}

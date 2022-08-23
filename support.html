@@ -12,13 +12,32 @@
     <div class="mainCard">
         <div class="playground">
             <div class="userSelection">
-
+                <div class="slider length-value">
+                    <input type="range" min="1" max="100" value="0" oninput="this.nextElementSibling.value = this.value" autocomplete="off">
+                    <input type="number" value="0" min="1" max="100" class="slider-value" oninput="this.previousElementSibling.value = this.value" onchange=handleChange(this)>
+                    <!-- <p id="rangeValue">0</p> -->
+                </div>
+                <div class="slider hinge-position">
+                    <input type="range" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value" autocomplete="off">
+                    <input type="number" value="0" min="0" max="100" class="slider-value" oninput="this.previousElementSibling.value = this.value" onchange=handleChange(this)>
+                    <!-- <p id="rangeValue">0</p> -->
+                </div>
+                <div class="slider roller-position">
+                    <input type="range" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value" autocomplete="off">
+                    <input type="number" value="0" min="0" max="100" class="slider-value" oninput="this.previousElementSibling.value = this.value" onchange=handleChange(this)>
+                    <!-- <p id="rangeValue">0</p> -->
+                </div>
             </div>
             <div class="display">
                 
             </div>
         </div>
     </div>
-    
+    <script>
+        function handleChange(input) {
+          if (input.value < 0) input.value = 0;
+          if (input.value > 100) input.value = 100;
+        }
+    </script>
 </body>
 </html>
