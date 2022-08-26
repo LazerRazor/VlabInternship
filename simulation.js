@@ -95,4 +95,10 @@ document.getElementById("pointLoadSubmit").addEventListener("click", function ()
     document.getElementById('pointLoadDistVal').setAttribute('disabled','');
     document.getElementById('pointLoadDistVal').style.opacity = '0.5';
     document.getElementById('pointercont').hidden = false;
+    document.getElementById('udl').removeAttribute('disabled');
+    document.getElementById('udlVal').removeAttribute('disabled');
+    document.getElementById('udlMinDist').removeAttribute('disabled');
+    document.getElementById('udlMinDistVal').removeAttribute('disabled');
+    document.getElementById('udlMaxDist').removeAttribute('disabled');
+    document.getElementById('udlMaxDistVal').removeAttribute('disabled');
   });
