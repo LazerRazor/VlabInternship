@@ -151,6 +151,8 @@ input::-webkit-inner-spin-button {
 }
 
 .wall {
+    position: relative;
+    z-index: 314;
     margin-left: 20px;
     top: 0;
     height: 100%;
@@ -263,6 +265,10 @@ input::-webkit-inner-spin-button {
     opacity: 0.5;
 }
 
+.support-value input {
+    opacity: 0.5;
+}
+
 .uvl-value input[type="number"] {
     opacity: 0.5;
 }
@@ -299,4 +305,28 @@ input::-webkit-inner-spin-button {
 
 .slider input[type="submit"]:disabled {
     opacity: 0.5;
+}
+
+.text
+{
+    color: white;
+    padding-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.fsupport
+{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: calc(22%);
+    margin-left: -15px;
+}
+
+.rsupport
+{
+    position: absolute;
+    width: 30px;
+    top: calc(22%);
+    margin-left: -15px;
 }

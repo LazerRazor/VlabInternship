@@ -19,6 +19,16 @@ function handleWidthSlider(input) {
     document.getElementById("beam").style.width = (input.value*5) + 40 + "px";
 }
 
+function supportfSlider(input) {
+    input.nextElementSibling.value = input.value;
+    document.getElementById("fsupport").style.marginLeft = (input.value*5)  - 15 + "px";
+}
+
+function supportrSlider(input) {
+    input.nextElementSibling.value = input.value;
+    document.getElementById("rsupport").style.marginLeft = (input.value*5)  - 15 + "px";
+}
+
 // Disabling Beam Length Change after Submit clicked
 document.getElementById("beamSubmit").addEventListener("click", function () {
     document.getElementById('beamLength').setAttribute('disabled','');
@@ -36,6 +46,24 @@ document.getElementById("beamSubmit").addEventListener("click", function () {
     document.getElementById('pointLoadDistVal').removeAttribute('disabled');
     document.getElementById('pointLoadDistVal').style.opacity = '1';
     document.getElementById('pointLoadSubmit').removeAttribute('disabled');
+    document.getElementById('pointLoadInc').removeAttribute('disabled');
+    document.getElementById('pointLoadInc').style.opacity = '1';
+    document.getElementById('pointLoadIncVal').removeAttribute('disabled');
+    document.getElementById('pointLoadIncVal').style.opacity = '1';
+
+    document.getElementById('fsupportDist').removeAttribute('disabled');
+    document.getElementById('fsupportDist').style.opacity = '1';
+    document.getElementById('fsupportDistVal').removeAttribute('disabled');
+    document.getElementById('fsupportDistVal').style.opacity = '1';
+    document.getElementById('fsupportSubmit').removeAttribute('disabled');
+    document.getElementById('rsupportSubmit').style.opacity = '1';
+    document.getElementById('rsupportSubmit').removeAttribute('disabled');
+    document.getElementById('fsupportSubmit').style.opacity = '1';
+    document.getElementById('rsupportDist').removeAttribute('disabled');
+    document.getElementById('rsupportDist').style.opacity = '1';
+    document.getElementById('rsupportDistVal').removeAttribute('disabled');
+    document.getElementById('rsupportDistVal').style.opacity = '1';
+
     let max = document.getElementById('beamLength').value;
     document.getElementById('pointLoadDist').max = max;
     document.getElementById('pointLoadDistVal').max = max;
@@ -45,7 +73,15 @@ document.getElementById("beamSubmit").addEventListener("click", function () {
     document.getElementById('uvlMaxDistVal').max = max;
     document.getElementById('uvlMinDist').max = max;
     document.getElementById('uvlMinDistVal').max = max;
+
+    document.getElementById('fsupportDist').max = max;
+    document.getElementById('fsupportDistVal').max = max;
+    document.getElementById('rsupportDist').max = max;
+    document.getElementById('rsupportDistVal').max = max;
+
+
     document.getElementById('beamSubmit').setAttribute('disabled','');
+
   });
   
 
@@ -56,6 +92,9 @@ document.getElementById("beamSubmit").addEventListener("click", function () {
 // Point Load Distance Change : 
 
 // Text Input
+
+
+
 function handlePDistInput(input) {
     input.value = input.value.replace(/^0+/, '') || 0;
     input.previousElementSibling.value = input.value;
@@ -96,8 +135,20 @@ function handlePLoadSlider(input) {
     document.getElementById("line").style.height = input.value + "px";
 }
 
+function handlePILoadSlider(input) {
+    input.nextElementSibling.value = input.value;
+    document.getElementById("line").style.transform = "rotate(" + (90 - input.value) + "deg)";
+    document.getElementById("line").style.transformOrigin = "50% 100%";
+    document.getElementById("pointer").style.transform = "rotate(" + (90 -input.value) + "deg)";
+    document.getElementById("pointer").style.transformOrigin = "50% 100%";
+}
+
 // Disabling Point Load Change after Submit clicked
 document.getElementById("pointLoadSubmit").addEventListener("click", function () {
+    document.getElementById('pointLoadInc').setAttribute('disabled','');
+    document.getElementById('pointLoadInc').style.opacity = '0.5';
+    document.getElementById('pointLoadIncVal').setAttribute('disabled','');
+    document.getElementById('pointLoadIncVal').style.opacity = '0.5';
     document.getElementById('pointLoad').setAttribute('disabled','');
     document.getElementById('pointLoad').style.opacity = '0.5';
     document.getElementById('pointLoadVal').setAttribute('disabled','');
@@ -435,7 +486,8 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     var uvlMinValDist = document.getElementById('uvlMinDist').value;
     var uvlMaxValDist = document.getElementById('uvlMaxDist').value;
 
-    var fixedForcePosition = pointLoadDist, fixedForceMagnitude = pointLoad, theta = Math.PI /2;
+    var fixedForcePosition = pointLoadDist, fixedForceMagnitude = pointLoad;
+    var theta = document.getElementById('pointLoadIncVal').value * Math.PI / 180;
     var UDLstart = udlMinDist, UDLend = udlMaxDist, UDLmagnitude = udl;
     var UVLstart = uvlMinValDist, UVLend = uvlMaxValDist, UVLmagnitude = (uvlMaxVal-uvlMinVal);
     var UVLUDLstart = uvlMinValDist, UVLUDLend = uvlMaxValDist, UVLUDLmagnitude = uvlMinVal;

@@ -7,53 +7,69 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">    
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="mainCard">
         <div class="playground">
             <div class="userSelection">
                 <div class="slider length-value">
+                    <div class="text">Beam Length:</div>
                     <input type="range" id="beamLength" min="1" max="100" value="0" oninput=handleWidthSlider(this)>
                     <input type="number" id="beamLengthVal" value="0" min="1" max="100" class="slider-value" oninput=handleWidthInput(this)>
                     <input type="submit" value="Submit" id="beamSubmit" style="margin-left: 10px;">
                     <br>
                 </div>
                 <div class="slider pointload-value" id="pointloadvalue">
+                    <div class="text">Position of Point Load:</div>
                     <input type="range" id="pointLoadDist" disabled min="0" max="100" value="0" oninput=handlePDistSlider(this)>
                     <input type="number" id="pointLoadDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handlePDistInput(this)>
                     <br>
+                    <div class="text">Magnitude of Point Load:</div>
                     <input type="range" id="pointLoad" disabled min="0" max="80" value="0" oninput=handlePLoadSlider(this)>
                     <input type="number" id="pointLoadVal" disabled value="0" min="0" max="80" class="slider-value" oninput=handlePLoadInput(this)>
+                    <br>
+                    <div class="text">Inclination of Point Load:</div>
+                    <input type="range" id="pointLoadInc" disabled min="0" max="360" value="90" oninput=handlePILoadSlider(this)>
+                    <input type="number" id="pointLoadIncVal" disabled value="90" min="0" max="360" class="slider-value" oninput=handlePILoadInput(this)>
                     <input type="submit" disabled value="Submit" id="pointLoadSubmit" style="margin-left: 10px;">
                     <br>
                 </div>
                 <div class="slider udl-value">
+                    <div class="text">Start Position of UDL:</div>
                     <input type="range" id="udlMaxDist" disabled min="0" max="100" value="0" oninput=handleudlMaxDistSlider(this)>
                     <input type="number" id="udlMaxDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleudlMaxDistInput(this)>
                     <input type="submit" disabled value="Submit" id="udlMaxSubmit" style="margin-left: 10px;">
                     <br>
+                    <div class="text">End Position of UDL:</div>
                     <input type="range" id="udlMinDist" disabled min="0" max="100" value="0" oninput=handleudlMinDistSlider(this)>
                     <input type="number" id="udlMinDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleudlMinDistInput(this)>
                     <input type="submit" disabled value="Submit" id="udlMinSubmit" style="margin-left: 10px;">
                     <br>
+                    <div class="text">Magnitude of UDL: </div>
                     <input type="range" id="udl" disabled min="0" max="80" value="0" oninput=handleudlSlider(this)>
                     <input type="number" id="udlVal" disabled value="0" min="0" max="80" class="slider-value" oninput=handleudlInput(this)>
                     <input type="submit" disabled value="Submit" id="udlSubmit" style="margin-left: 10px;">
                     <br>
                 </div>
                 <div class="slider uvl-value">
+                    <div class="text">Start Position of UVL: </div>
                     <input type="range" id="uvlMaxDist" disabled min="0" max="100" value="0" oninput=handleuvlMaxDistSlider(this)>
                     <input type="number" id="uvlMaxDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleuvlMaxDistInput(this)>
                     <input type="submit" disabled value="Submit" id="uvlMaxDistSubmit" style="margin-left: 10px;">
                     <br>
+                    <div class="text">End Position of UVL:</div>
                     <input type="range" id="uvlMinDist" disabled min="0" max="100" value="0" oninput=handleuvlMinDistSlider(this)>
                     <input type="number" id="uvlMinDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleuvlMinDistInput(this)>
                     <input type="submit" disabled value="Submit" id="uvlMinDistSubmit" style="margin-left: 10px;">
                     <br>
+                    <div class="text">Start Magnitude of UVL:</div>
                     <input type="range" id="uvlMax" disabled min="0" max="80" value="0" oninput=handleuvlMaxSlider(this)>
                     <input type="number" id="uvlMaxVal" disabled value="0" min="0" max="80" class="slider-value" oninput=handleuvlMaxInput(this)>
                     <input type="submit" disabled value="Submit" id="uvlMaxSubmit" style="margin-left: 10px;">
                     <br>
+                    <div class="text">End Magnitude of UVL:</div>
                     <input type="range" id="uvlMin" disabled min="0" max="80" value="0" oninput=handleuvlMinSlider(this)>
                     <input type="number" id="uvlMinVal" disabled value="0" min="0" max="80" class="slider-value" oninput=handleuvlMinInput(this)>
                     <input type="submit" disabled value="Submit" id="uvlMinSubmit" style="margin-left: 10px;">
@@ -77,6 +93,7 @@
                     <img src="/images/udlmaxline.png" hidden alt="udlmaxline" class="udlmaxline udlimg" id="udlmaxline">
                     <img src="/images/arrowline.png" hidden alt="line" class="line" id="line">
                     <img src="/images/arrowpointer.png" hidden alt="pointer" class="pointer" id="pointer">
+                    
                 </div>
                 <div class="graphs" style="margin-top: 5vh;">
                     <div id="shear" style="width:45%;max-height: 40vh;margin-left: 3.33%;border-radius: 5vh;overflow: hidden;"></div>
