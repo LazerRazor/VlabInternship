@@ -101,8 +101,8 @@ a
     }
     .slider input[type="range"] {
     -webkit-appearance:none !important;
-    width: 60%;
-    height: 1.5px;
+    width: 40%;
+    height: 2.5px;
     background: #A3B1E1;
     border: none;
     outline: none;
@@ -126,7 +126,7 @@ input::-webkit-inner-spin-button {
     display: border-box;
     margin-left: 1rem;
     margin-bottom: 0.5rem;
-    width: 3rem;
+    width: 10%;
     text-align: center;
     color: black;
     font-size: 1rem;
@@ -143,7 +143,7 @@ input::-webkit-inner-spin-button {
 
 .simulation {
     background: white;
-    height: 30vh;
+    height: 28vh;
     width: 94%;
     margin-top: 3vh;
     margin-left: 3%;
@@ -174,15 +174,129 @@ input::-webkit-inner-spin-button {
 
 .line {
     position: absolute;
-    width: 0.5px;
-    margin-left: px;
+    width: 2.5px;
+    margin-left: 1.25 px;
+    height: 0px;
+    bottom: calc(80%);
+    border-radius: 2.5px;
+}
+
+.udlimg {
+    position: absolute;
+}
+
+.udlminpointer {
+    width: 20px;
+    margin-left: -10px;
+    top: calc(20% - 1.25vh);
+}
+
+.udlmaxpointer {
+    width: 20px;
+    margin-left: -10px;
+    top: calc(20% - 1.25vh);
+}
+
+.udlminline {
+    width: 2px;
+    margin-left: 1px;
     height: 0px;
     bottom: calc(80%);
 }
 
-.pointercont {
+.udlmaxline {
+    width: 2px;
+    margin-left: 1px;
+    height: 0px;
+    bottom: calc(80%);
+}
+
+.udlarea {
+    width: 0;
+    height: 0;
+    bottom: 80%;
+}
+
+.uvlimg {
     position: absolute;
-    height: 15px;
-    width: 500px;
-    object-fit: fill;
+}
+
+.uvlminpointer {
+    width: 20px;
+    margin-left: -10px;
+    top: calc(20% - 1.25vh);
+}
+
+.uvlmaxpointer {
+    width: 20px;
+    margin-left: -10px;
+    top: calc(20% - 1.25vh);
+}
+
+.uvlminline {
+    width: 2px;
+    margin-left: 1px;
+    height: 0px;
+    bottom: calc(80%);
+}
+
+.uvlmaxline {
+    width: 2px;
+    margin-left: 1px;
+    height: 0px;
+    bottom: calc(80%);
+}
+
+.uvlrectangle {
+    width: 0;
+    height: 0;
+    bottom: calc(80%);
+}
+
+.uvltriangle {
+    width: 0;
+    height: 0;
+    bottom: calc(80%);
+}
+
+.uvl-value input[type="range"] {
+    opacity: 0.5;
+}
+
+.uvl-value input[type="number"] {
+    opacity: 0.5;
+}
+
+.udl-value input[type="range"] {
+    opacity: 0.5;
+}
+
+.udl-value input[type="number"] {
+    opacity: 0.5;
+}
+
+.pointload-value input[type="range"] {
+    opacity: 0.5;
+}
+
+.pointload-value input[type="number"] {
+    opacity: 0.5;
+}
+
+.graphs {
+    display: flex;
+}
+
+.slider input[type="submit"] {
+    width: 4rem;
+    height: 1.5rem;
+    color: white;
+    background-color: #59CE8F;
+    border: none;
+    border-radius: 1rem;
+    font-weight: bold;
+}
+
+.slider input[type="submit"]:disabled {
+    opacity: 0.5;
 }

@@ -1,17 +1,38 @@
-var fixedForcePosition = 3, fixedForceMagnitude = 10, theta = 90;
-var UDLstart = 10, UDLend = 15, UDLmagnitude = 10;
-var UVLstart = 20, UVLend = 30, UVLmagnitude = 7;
+var fixedForcePosition = pointLoadDist, fixedForceMagnitude = pointLoad, theta = 90;
+var UDLstart = udlMinDist, UDLend = udlMaxDist, UDLmagnitude = udl;
+var UVLstart = uvlMinValDist, UVLend = uvlMaxValDist, UVLmagnitude = (uvlMaxVal-uvlMinVal);
+var UVLUDLstart = uvlMinValDist, UVLUDLend = uvlMaxValDist, UVLUDLmagnitude = uvlMinVal;
 var CurrentForce = 0, CurrentMoment = 0;
+
+// Beam Length
+import { beamLength } from "./simulation";
+
+// Point Load
+import { pointLoad } from "./simulation";
+import { pointLoadDist } from "./simulation";
+
+// Uniformly Distributed Load
+import { udl } from "./simulation";
+import { udlMaxDist } from "./simulation";
+import { udlMinDist } from "./simulation";
+
+// Uniformly Varying Load
+import { uvlMaxVal } from "./simulation";
+import { uvlMinVal } from "./simulation";
+import { uvlMaxValDist } from "./simulation";
+import { uvlMinValDist } from "./simulation";
 
 var xValues = [];
 var yValues = [];
 var MomentValues = []
 
-for (var x = 100; x >= 0 ; x -= 0.1) {
+for (var x = beamLength; x >= 0 ; x -= 0.1) {
   xValues.push(x);
   MomentValues.push(CurrentMoment);
   if(x == fixedForcePosition) CurrentForce += fixedForceMagnitude*Math.sin(theta);
   if(x >= UDLstart && x <= UDLend) CurrentForce += UDLmagnitude*0.1;
+  if(x >= UVLUDLstart && x <= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.1;
+  else if(x <= UVLUDLstart && x >= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.1;
   if(x >= UVLstart && x <= UVLend) CurrentForce += ((x+0.05) - UVLstart)*((UVLmagnitude)/(UVLend - UVLstart))*0.1;
   else if(x >= UVLend && x <= UVLstart) CurrentForce += ((x+0.05) - UVLend)*((UVLmagnitude)/(UVLstart - UVLend))*0.1;
   yValues.push(-CurrentForce);
