@@ -435,11 +435,7 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     var uvlMinValDist = document.getElementById('uvlMinDist').value;
     var uvlMaxValDist = document.getElementById('uvlMaxDist').value;
 
-<<<<<<< Updated upstream
     var fixedForcePosition = pointLoadDist, fixedForceMagnitude = pointLoad, theta = Math.PI /2;
-=======
-    var fixedForcePosition = pointLoadDist, fixedForceMagnitude = pointLoad, theta = math.PI/2;
->>>>>>> Stashed changes
     var UDLstart = udlMinDist, UDLend = udlMaxDist, UDLmagnitude = udl;
     var UVLstart = uvlMinValDist, UVLend = uvlMaxValDist, UVLmagnitude = (uvlMaxVal-uvlMinVal);
     var UVLUDLstart = uvlMinValDist, UVLUDLend = uvlMaxValDist, UVLUDLmagnitude = uvlMinVal;
@@ -452,11 +448,7 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     for (var x = beamLength; x >= 0 ; x -= 0.1) {
     xValues.push(x);
     MomentValues.push(CurrentMoment);
-<<<<<<< Updated upstream
-    if(x - fixedForcePosition >= 0 && (x-fixedForcePosition)<=1e-9) CurrentForce += fixedForceMagnitude*Math.sin(theta);
-=======
     if((0<(x-fixedForcePosition)) && ((x-fixedForcePosition)<=1e-9)) CurrentForce += fixedForceMagnitude*Math.sin(theta);
->>>>>>> Stashed changes
     if(x >= UDLstart && x <= UDLend) CurrentForce += UDLmagnitude*0.1;
     if(x >= UVLUDLstart && x <= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.1;
     else if(x <= UVLUDLstart && x >= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.1;
