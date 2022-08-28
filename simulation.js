@@ -448,7 +448,7 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     for (var x = beamLength; x >= 0 ; x -= 0.1) {
     xValues.push(x);
     MomentValues.push(CurrentMoment);
-    if((0<(x-fixedForcePosition)) && ((x-fixedForcePosition)<=1e-9)) CurrentForce += fixedForceMagnitude*Math.sin(theta);
+    if((0<=(x-fixedForcePosition)) && ((x-fixedForcePosition)<=1e-9)) CurrentForce += fixedForceMagnitude*Math.sin(theta);
     if(x >= UDLstart && x <= UDLend) CurrentForce += UDLmagnitude*0.1;
     if(x >= UVLUDLstart && x <= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.1;
     else if(x <= UVLUDLstart && x >= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.1;
