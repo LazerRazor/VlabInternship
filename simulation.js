@@ -31,6 +31,9 @@ function supportrSlider(input) {
 
 // Disabling Beam Length Change after Submit clicked
 document.getElementById("beamSubmit").addEventListener("click", function () {
+    document.getElementById('lengthvalue').style.display = "none";
+    document.getElementById('pointloadvalue').style.display = "inline-block";
+
     document.getElementById('beamLength').setAttribute('disabled','');
     document.getElementById('beamLength').style.opacity = '0.5';
     document.getElementById('beamLengthVal').setAttribute('disabled','');
@@ -51,6 +54,24 @@ document.getElementById("beamSubmit").addEventListener("click", function () {
     document.getElementById('pointLoadIncVal').removeAttribute('disabled');
     document.getElementById('pointLoadIncVal').style.opacity = '1';
 
+
+
+    let max = document.getElementById('beamLength').value;
+    document.getElementById('pointLoadDist').max = max;
+    document.getElementById('pointLoadDistVal').max = max;
+    document.getElementById('udlMaxDist').max = max;
+    document.getElementById('udlMaxDistVal').max = max;
+    document.getElementById('uvlMaxDist').max = max;
+    document.getElementById('uvlMaxDistVal').max = max;
+    document.getElementById('uvlMinDist').max = max;
+    document.getElementById('uvlMinDistVal').max = max;
+
+    document.getElementById('beamSubmit').setAttribute('disabled','');
+
+    document.getElementById('fsupportDist').max = max;
+    document.getElementById('fsupportDistVal').max = max;
+    document.getElementById('rsupportDist').max = max;
+    document.getElementById('rsupportDistVal').max = max;
     document.getElementById('fsupportDist').removeAttribute('disabled');
     document.getElementById('fsupportDist').style.opacity = '1';
     document.getElementById('fsupportDistVal').removeAttribute('disabled');
@@ -63,24 +84,6 @@ document.getElementById("beamSubmit").addEventListener("click", function () {
     document.getElementById('rsupportDist').style.opacity = '1';
     document.getElementById('rsupportDistVal').removeAttribute('disabled');
     document.getElementById('rsupportDistVal').style.opacity = '1';
-
-    let max = document.getElementById('beamLength').value;
-    document.getElementById('pointLoadDist').max = max;
-    document.getElementById('pointLoadDistVal').max = max;
-    document.getElementById('udlMaxDist').max = max;
-    document.getElementById('udlMaxDistVal').max = max;
-    document.getElementById('uvlMaxDist').max = max;
-    document.getElementById('uvlMaxDistVal').max = max;
-    document.getElementById('uvlMinDist').max = max;
-    document.getElementById('uvlMinDistVal').max = max;
-
-    document.getElementById('fsupportDist').max = max;
-    document.getElementById('fsupportDistVal').max = max;
-    document.getElementById('rsupportDist').max = max;
-    document.getElementById('rsupportDistVal').max = max;
-
-
-    document.getElementById('beamSubmit').setAttribute('disabled','');
 
   });
   
@@ -145,6 +148,9 @@ function handlePILoadSlider(input) {
 
 // Disabling Point Load Change after Submit clicked
 document.getElementById("pointLoadSubmit").addEventListener("click", function () {
+    document.getElementById('pointloadvalue').style.display = "none";
+    document.getElementById('udlvalue').style.display = "inline-block";
+
     document.getElementById('pointLoadInc').setAttribute('disabled','');
     document.getElementById('pointLoadInc').style.opacity = '0.5';
     document.getElementById('pointLoadIncVal').setAttribute('disabled','');
@@ -282,6 +288,9 @@ function handleudlSlider(input) {
 
 // Disabling udl Change after Submit clicked
 document.getElementById("udlSubmit").addEventListener("click", function () {
+    document.getElementById('udlvalue').style.display = "none";
+    document.getElementById('uvlvalue').style.display = "inline-block";
+
     document.getElementById('udl').setAttribute('disabled','');
     document.getElementById('udl').style.opacity = '0.5';
     document.getElementById('udlVal').setAttribute('disabled','');
