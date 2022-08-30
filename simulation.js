@@ -11,12 +11,14 @@ function handleWidthInput(input) {
         input.value = 100;
     }
     document.getElementById("beam").style.width = (input.value*5) + 40 + "px";
+    document.getElementById("supportbeam").style.width = (input.value*5) + "px";
 }
 
 // Slider Input
 function handleWidthSlider(input) {
     input.nextElementSibling.value = input.value;
     document.getElementById("beam").style.width = (input.value*5) + 40 + "px";
+    document.getElementById("supportbeam").style.width = (input.value*5) + "px";
 }
 
 function supportfSlider(input) {

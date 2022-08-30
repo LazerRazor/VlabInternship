@@ -152,7 +152,7 @@ input::-webkit-inner-spin-button {
 
 .wall {
     position: relative;
-    z-index: 314;
+    /* z-index: 314; */
     margin-left: 20px;
     top: 0;
     height: 100%;
@@ -167,11 +167,19 @@ input::-webkit-inner-spin-button {
     width: 40px;
 }
 
+.supportbeam {
+    position: absolute;
+    margin-left: 0px;
+    top: 20%;
+    height: 2.5vh;
+    width: 0px;
+}
+
 .pointer {
     position: absolute;
     width: 20px;
     margin-left: -10px;
-    top: calc(20% - 1.25vh);
+    bottom: calc(80%);
 }
 
 .line {

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">    
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
@@ -14,41 +14,43 @@
     <div class="mainCard">
         <div class="playground">
             <div class="userSelection">
-                <div class="slider length-value">
+                <div class="slider length-value" id="lengthvalue">
                     <div class="text">Beam Length:</div>
                     <input type="range" id="beamLength" min="1" max="100" value="0" oninput=handleWidthSlider(this)>
                     <input type="number" id="beamLengthVal" value="0" min="1" max="100" class="slider-value" oninput=handleWidthInput(this)>
                     <input type="submit" value="Submit" id="beamSubmit" style="margin-left: 10px;">
                     <br>
                 </div>
-                <div class="slider support-value">
-                    <div class="text">Position of Fixed Support:</div>
-                    <input type="range" id="fsupportDist" disabled min="0" max="100" value="0" oninput=supportfSlider(this)>
-                    <input type="number" id="fsupportDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleudlMaxDistInput(this)>
-                    <input type="submit" disabled value="Submit" id="fsupportSubmit" style="margin-left: 10px;">
-                    <br>
-                    <div class="text">Position of Roller Support:</div>
-                    <input type="range" id="rsupportDist" disabled min="0" max="100" value="0" oninput=supportrSlider(this)>
-                    <input type="number" id="rsupportDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleudlMinDistInput(this)>
-                    <input type="submit" disabled value="Submit" id="rsupportSubmit" style="margin-left: 10px;">
-                    <br>
+                <div id="pointloadvalue" style="display:none">
+                    <div class="slider support-value">
+                        <div class="text">Position of Fixed Support:</div>
+                        <input type="range" id="fsupportDist" disabled min="0" max="100" value="0" oninput=supportfSlider(this)>
+                        <input type="number" id="fsupportDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleudlMaxDistInput(this)>
+                        <input type="submit" disabled value="Submit" id="fsupportSubmit" style="margin-left: 10px;">
+                        <br>
+                        <div class="text">Position of Roller Support:</div>
+                        <input type="range" id="rsupportDist" disabled min="0" max="100" value="0" oninput=supportrSlider(this)>
+                        <input type="number" id="rsupportDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleudlMinDistInput(this)>
+                        <input type="submit" disabled value="Submit" id="rsupportSubmit" style="margin-left: 10px;">
+                        <br>
+                    </div>
+                    <div class="slider pointload-value">
+                        <div class="text">Position of Point Load:</div>
+                        <input type="range" id="pointLoadDist" disabled min="0" max="100" value="0" oninput=handlePDistSlider(this)>
+                        <input type="number" id="pointLoadDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handlePDistInput(this)>
+                        <br>
+                        <div class="text">Magnitude of Point Load:</div>
+                        <input type="range" id="pointLoad" disabled min="0" max="80" value="0" oninput=handlePLoadSlider(this)>
+                        <input type="number" id="pointLoadVal" disabled value="0" min="0" max="80" class="slider-value" oninput=handlePLoadInput(this)>
+                        <br>
+                        <div class="text">Inclination of Point Load:</div>
+                        <input type="range" id="pointLoadInc" disabled min="0" max="360" value="90" oninput=handlePILoadSlider(this)>
+                        <input type="number" id="pointLoadIncVal" disabled value="90" min="0" max="360" class="slider-value" oninput=handlePILoadInput(this)>
+                        <input type="submit" disabled value="Submit" id="pointLoadSubmit" style="margin-left: 10px;">
+                        <br>
+                    </div>
                 </div>
-                <div class="slider pointload-value" id="pointloadvalue">
-                    <div class="text">Position of Point Load:</div>
-                    <input type="range" id="pointLoadDist" disabled min="0" max="100" value="0" oninput=handlePDistSlider(this)>
-                    <input type="number" id="pointLoadDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handlePDistInput(this)>
-                    <br>
-                    <div class="text">Magnitude of Point Load:</div>
-                    <input type="range" id="pointLoad" disabled min="0" max="80" value="0" oninput=handlePLoadSlider(this)>
-                    <input type="number" id="pointLoadVal" disabled value="0" min="0" max="80" class="slider-value" oninput=handlePLoadInput(this)>
-                    <br>
-                    <div class="text">Inclination of Point Load:</div>
-                    <input type="range" id="pointLoadInc" disabled min="0" max="360" value="90" oninput=handlePILoadSlider(this)>
-                    <input type="number" id="pointLoadIncVal" disabled value="90" min="0" max="360" class="slider-value" oninput=handlePILoadInput(this)>
-                    <input type="submit" disabled value="Submit" id="pointLoadSubmit" style="margin-left: 10px;">
-                    <br>
-                </div>
-                <div class="slider udl-value">
+                <div class="slider udl-value" id="udlvalue" style="display:none">
                     <div class="text">Start Position of UDL:</div>
                     <input type="range" id="udlMaxDist" disabled min="0" max="100" value="0" oninput=handleudlMaxDistSlider(this)>
                     <input type="number" id="udlMaxDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleudlMaxDistInput(this)>
@@ -65,7 +67,7 @@
                     <input type="submit" disabled value="Submit" id="udlSubmit" style="margin-left: 10px;">
                     <br>
                 </div>
-                <div class="slider uvl-value">
+                <div class="slider uvl-value" id="uvlvalue" style="display:none">
                     <div class="text">Start Position of UVL: </div>
                     <input type="range" id="uvlMaxDist" disabled min="0" max="100" value="0" oninput=handleuvlMaxDistSlider(this)>
                     <input type="number" id="uvlMaxDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleuvlMaxDistInput(this)>
@@ -91,7 +93,8 @@
             <div class="display">
                 <div class="simulation">
                     <img src="/images/wall1.png" style="opacity:0" wall" class="wall">
-                    <img src="/images/beam.png" alt="beam" class="beam" id="beam">
+                    <img src="/images/beam.png" style="display: none;" alt="beam" class="beam" id="beam">
+                    <img src="/images/beam.png" alt="beam" class="supportbeam" id="supportbeam">
                     <img src="/images/uvltriangle.png" hidden alt="" class="uvltriangle uvlimg" id="uvltriangle">
                     <img src="/images/uvlrectanglenew.png" hidden alt="" class="uvlrectangle uvlimg" id="uvlrectangle">
                     <img src="/images/uvlminpointer.png" hidden alt="" class="uvlminpointer uvlimg" id="uvlminpointer">
