@@ -2,23 +2,21 @@
 
 // Text Input
 function handleWidthInput(input) {
-    input.value = input.value.replace(/^1+/, '') || 1;
+    input.value = input.value.replace(/^1+/, '');
     input.previousElementSibling.value = input.value
-    if (input.value < 0) {
-        input.value = 0;
+    if (input.value < 1) {
+        input.value = 1;
     }
     if (parseInt(input.value) > 100) {
         input.value = 100;
     }
-    document.getElementById("beam").style.width = (input.value*5) + 40 + "px";
-    document.getElementById("supportbeam").style.width = (input.value*5) + "px";
+    document.getElementById("beam").style.width = (input.value*5) + "px";
 }
 
 // Slider Input
 function handleWidthSlider(input) {
     input.nextElementSibling.value = input.value;
-    document.getElementById("beam").style.width = (input.value*5) + 40 + "px";
-    document.getElementById("supportbeam").style.width = (input.value*5) + "px";
+    document.getElementById("beam").style.width = (input.value*5) + "px";
 }
 
 function supportfSlider(input) {

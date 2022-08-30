@@ -161,14 +161,6 @@ input::-webkit-inner-spin-button {
 
 .beam {
     position: absolute;
-    margin-left: -40px;
-    top: 20%;
-    height: 2.5vh;
-    width: 40px;
-}
-
-.supportbeam {
-    position: absolute;
     margin-left: 0px;
     top: 20%;
     height: 2.5vh;
