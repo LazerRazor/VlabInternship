@@ -19,16 +19,6 @@ function handleWidthSlider(input) {
     document.getElementById("beam").style.width = (input.value*5) + "px";
 }
 
-function supportfSlider(input) {
-    input.nextElementSibling.value = input.value;
-    document.getElementById("fsupport").style.marginLeft = (input.value*5)  - 15 + "px";
-}
-
-function supportrSlider(input) {
-    input.nextElementSibling.value = input.value;
-    document.getElementById("rsupport").style.marginLeft = (input.value*5)  - 15 + "px";
-}
-
 // Disabling Beam Length Change after Submit clicked
 document.getElementById("beamSubmit").addEventListener("click", function () {
     document.getElementById('lengthvalue').style.display = "none";
@@ -66,8 +56,6 @@ document.getElementById("beamSubmit").addEventListener("click", function () {
     document.getElementById('uvlMinDist').max = max;
     document.getElementById('uvlMinDistVal').max = max;
 
-    document.getElementById('beamSubmit').setAttribute('disabled','');
-
     document.getElementById('fsupportDist').max = max;
     document.getElementById('fsupportDistVal').max = max;
     document.getElementById('rsupportDist').max = max;
@@ -76,19 +64,48 @@ document.getElementById("beamSubmit").addEventListener("click", function () {
     document.getElementById('fsupportDist').style.opacity = '1';
     document.getElementById('fsupportDistVal').removeAttribute('disabled');
     document.getElementById('fsupportDistVal').style.opacity = '1';
-    document.getElementById('fsupportSubmit').removeAttribute('disabled');
-    document.getElementById('rsupportSubmit').style.opacity = '1';
-    document.getElementById('rsupportSubmit').removeAttribute('disabled');
-    document.getElementById('fsupportSubmit').style.opacity = '1';
     document.getElementById('rsupportDist').removeAttribute('disabled');
     document.getElementById('rsupportDist').style.opacity = '1';
     document.getElementById('rsupportDistVal').removeAttribute('disabled');
     document.getElementById('rsupportDistVal').style.opacity = '1';
 
+    document.getElementById('beamSubmit').setAttribute('disabled','');
+
   });
-  
 
+function supportfInput(input) {
+    input.value = input.value.replace(/^0+/, '') || 0;
+    input.previousElementSibling.value = input.value;
+    if (input.value < 0) {
+        input.value = 0;
+    }
+    let max = document.getElementById('beamLength').value;
+    if (parseInt(input.value) > max) {
+        input.value = max;
+    }
+    document.getElementById("fsupport").style.marginLeft = (input.value*5)  - 15 + "px";
+}
+function supportfSlider(input) {
+    input.nextElementSibling.value = input.value;
+    document.getElementById("fsupport").style.marginLeft = (input.value*5)  - 15 + "px";
+}
 
+function supportrInput(input) {
+    input.value = input.value.replace(/^0+/, '') || 0;
+    input.previousElementSibling.value = input.value;
+    if (input.value < 0) {
+        input.value = 0;
+    }
+    let max = document.getElementById('beamLength').value;
+    if (parseInt(input.value) > max) {
+        input.value = max;
+    }
+    document.getElementById("rsupport").style.marginLeft = (input.value*5)  - 15 + "px";
+}
+function supportrSlider(input) {
+    input.nextElementSibling.value = input.value;
+    document.getElementById("rsupport").style.marginLeft = (input.value*5)  - 15 + "px";
+}
 
 /* POINT LOAD CHANGE ON INPUT */
 
@@ -169,6 +186,7 @@ document.getElementById("pointLoadSubmit").addEventListener("click", function ()
     document.getElementById('udlMaxDistVal').removeAttribute('disabled');
     document.getElementById('udlMaxDistVal').style.opacity = '1';
     document.getElementById('udlMaxSubmit').removeAttribute('disabled');
+
     document.getElementById('pointLoadSubmit').setAttribute('disabled','');
   });
 
@@ -495,6 +513,9 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     var uvlMinValDist = document.getElementById('uvlMinDist').value;
     var uvlMaxValDist = document.getElementById('uvlMaxDist').value;
 
+    let hingePos = document.getElementById('fsupportDist').value;
+    let rollPos = document.getElementById('rsupportDist').value;
+
     var fixedForcePosition = pointLoadDist, fixedForceMagnitude = pointLoad;
     var theta = document.getElementById('pointLoadIncVal').value * Math.PI / 180;
     var UDLstart = udlMinDist, UDLend = udlMaxDist, UDLmagnitude = udl;
@@ -502,30 +523,64 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     var UVLUDLstart = uvlMinValDist, UVLUDLend = uvlMaxValDist, UVLUDLmagnitude = uvlMinVal;
     var CurrentForce = 0, CurrentMoment = 0;
 
+    if (document.getElementById('wall').style.opacity == 0) {
+        var fsupportpos = hingePos, rsupportpos = rollPos, fsupportmag = 0, rsupportmag = 0;
+        var uvlstart = UVLstart, uvlend = UVLend, uvlstartmag = uvlMinVal, uvlendmag = uvlMaxVal;
+        var udlstart = UDLstart, udlend = UDLend, udlmag = UDLmagnitude;
+        var pointdist = fixedForcePosition, pointmag =fixedForceMagnitude, pointinc = theta;
+
+        var condenseduvlpos = 0, condenseduvlbasepos = 0, condenseduvlmag = 0, condenseduvlbasemag = 0;
+        var condensedudlpos = 0, condensedudlmag = 0;
+        var momentfsupport = 0;
+
+        if(uvlend > uvlstart) condenseduvlpos = 1/3 * (uvlend - uvlstart) + uvlstart;
+        else condenseduvlpos = 2/3 * (uvlstart - uvlend) + uvlend;
+
+        condenseduvlmag = 1/2 * Math.abs(uvlend - uvlstart) * (uvlendmag - uvlstartmag);
+
+        condenseduvlbasemag = Math.abs(uvlend - uvlstart)* uvlstartmag;
+
+        condenseduvlbasepos = 1/2 * Math.abs(uvlend - uvlstart) + Math.min(uvlstart,uvlend);
+
+        condensedudlmag = (udlend - udlstart) * udlmag;
+
+        condensedudlpos = (udlend - udlstart) * 1/2 + udlstart;
+
+        momentfsupport = (condensedudlpos - fsupportpos)*condensedudlmag + (condenseduvlpos - fsupportpos)*condenseduvlmag + (condenseduvlbasepos - fsupportpos)*condenseduvlbasemag + (pointdist - fsupportpos)*pointmag*Math.sin(pointinc);
+
+        rsupportmag = momentfsupport/(fsupportpos - rsupportpos);
+
+        fsupportmag = -(rsupportmag + condensedudlmag + condenseduvlbasemag + condenseduvlmag + pointmag*Math.sin(pointinc))
+
+        console.log(rsupportmag,fsupportmag)
+    }
+
     var xValues = [];
     var yValues = [];
     var MomentValues = []
 
-    for (var x = beamLength; x >= 0 ; x -= 0.1) {
+    for (var x = beamLength; x >= 0 ; x -= 0.0625) {
     xValues.push(x);
     MomentValues.push(CurrentMoment);
-    if((0<=(x-fixedForcePosition)) && ((x-fixedForcePosition)<=1e-9)) CurrentForce += fixedForceMagnitude*Math.sin(theta);
-    if(x >= UDLstart && x <= UDLend) CurrentForce += UDLmagnitude*0.1;
-    if(x >= UVLUDLstart && x <= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.1;
-    else if(x <= UVLUDLstart && x >= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.1;
-    if(x >= UVLstart && x <= UVLend) CurrentForce += ((x+0.05) - UVLstart)*((UVLmagnitude)/(UVLend - UVLstart))*0.1;
-    else if(x >= UVLend && x <= UVLstart) CurrentForce += ((x+0.05) - UVLend)*((UVLmagnitude)/(UVLstart - UVLend))*0.1;
+    if(x==rsupportpos) CurrentForce += rsupportmag;
+    if(x==fsupportpos) CurrentForce += fsupportmag;
+    if(x==fixedForcePosition) CurrentForce += fixedForceMagnitude*Math.sin(theta);
+    if(x >= UDLstart && x <= UDLend) CurrentForce += UDLmagnitude*0.0625;
+    if(x >= UVLUDLstart && x <= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.0625;
+    else if(x <= UVLUDLstart && x >= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.0625;
+    if(x >= UVLstart && x <= UVLend) CurrentForce += ((x+0.03125) - UVLstart)*((UVLmagnitude)/(UVLend - UVLstart))*0.0625;
+    else if(x >= UVLend && x <= UVLstart) CurrentForce += ((x+0.03125) - UVLend)*((UVLmagnitude)/(UVLstart - UVLend))*0.0625;
     yValues.push(-CurrentForce);
     console.log(CurrentForce,x);
-    CurrentMoment += CurrentForce*0.1;
+    CurrentMoment += CurrentForce*0.0625;
     }
 
     yValues.reverse()
     xValues.reverse()
     MomentValues.reverse()
 
-    let shearMin = Math.min(...yValues).toFixed(2);
-    let bendingMax = Math.max(...MomentValues).toFixed(2);
+    let shearMin = Math.min(yValues).toFixed(2);
+    let bendingMax = Math.max(MomentValues).toFixed(2);
 
     var data = [{
     x: xValues,
