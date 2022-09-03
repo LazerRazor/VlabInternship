@@ -23,6 +23,7 @@
                 </div>
                 <div class="slider pointload-value" id="pointloadvalue" style="display:none">
                     <div class="text">Position of Point Load:</div>
+                    <input type="range" id="fsupportDistVal" class="noslider" style="display:none">
                     <input type="range" id="pointLoadDist" disabled min="0" max="100" value="0" oninput=handlePDistSlider(this)>
                     <input type="number" id="pointLoadDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handlePDistInput(this)>
                     <br>
@@ -78,7 +79,7 @@
             </div>
             <div class="display">
                 <div class="simulation">
-                    <img src="/images/wall1.png" alt="wall" class="wall">
+                    <img src="/images/wall1.png" alt="wall" class="wall" style="opacity: 1;">
                     <img src="/images/beam.png" alt="beam" class="beam" id="beam">
                     <img src="/images/uvltriangle.png" hidden alt="" class="uvltriangle uvlimg" id="uvltriangle">
                     <img src="/images/uvlrectanglenew.png" hidden alt="" class="uvlrectangle uvlimg" id="uvlrectangle">

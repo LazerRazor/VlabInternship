@@ -190,25 +190,25 @@ input::-webkit-inner-spin-button {
 .udlminpointer {
     width: 20px;
     margin-left: -10px;
-    top: calc(20% - 1.25vh);
+    bottom: calc(80%);
 }
 
 .udlmaxpointer {
     width: 20px;
     margin-left: -10px;
-    top: calc(20% - 1.25vh);
+    bottom: calc(80%);
 }
 
 .udlminline {
     width: 2px;
-    margin-left: 1px;
+    margin-left: -1px;
     height: 0px;
     bottom: calc(80%);
 }
 
 .udlmaxline {
     width: 2px;
-    margin-left: 1px;
+    margin-left: -1px;
     height: 0px;
     bottom: calc(80%);
 }
@@ -226,25 +226,25 @@ input::-webkit-inner-spin-button {
 .uvlminpointer {
     width: 20px;
     margin-left: -10px;
-    top: calc(20% - 1.25vh);
+    bottom: calc(80%);
 }
 
 .uvlmaxpointer {
     width: 20px;
     margin-left: -10px;
-    top: calc(20% - 1.25vh);
+    bottom: calc(80%);
 }
 
 .uvlminline {
     width: 2px;
-    margin-left: 1px;
+    margin-left: -1px;
     height: 0px;
     bottom: calc(80%);
 }
 
 .uvlmaxline {
     width: 2px;
-    margin-left: 1px;
+    margin-left: -1px;
     height: 0px;
     bottom: calc(80%);
 }

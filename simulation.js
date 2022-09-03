@@ -513,18 +513,19 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     var uvlMinValDist = document.getElementById('uvlMinDist').value;
     var uvlMaxValDist = document.getElementById('uvlMaxDist').value;
 
-    let hingePos = document.getElementById('fsupportDist').value;
-    let rollPos = document.getElementById('rsupportDist').value;
-
     var fixedForcePosition = pointLoadDist, fixedForceMagnitude = pointLoad;
     var theta = document.getElementById('pointLoadIncVal').value * Math.PI / 180;
     var UDLstart = udlMinDist, UDLend = udlMaxDist, UDLmagnitude = udl;
     var UVLstart = uvlMinValDist, UVLend = uvlMaxValDist, UVLmagnitude = (uvlMaxVal-uvlMinVal);
     var UVLUDLstart = uvlMinValDist, UVLUDLend = uvlMaxValDist, UVLUDLmagnitude = uvlMinVal;
     var CurrentForce = 0, CurrentMoment = 0;
-
-    if (document.getElementById('wall').style.opacity == 0) {
-        var fsupportpos = hingePos, rsupportpos = rollPos, fsupportmag = 0, rsupportmag = 0;
+    var fsupportmag = 0, rsupportmag = 0, fsupportpos = 0, rsupportpos = 0;
+    const fsupportDistVal = document.getElementById("fsupportDistVal").className;
+    console.log(fsupportDistVal)
+    if (fsupportDistVal == 'slider-value') {
+        let hingePos = document.getElementById('fsupportDist').value;
+        let rollPos = document.getElementById('rsupportDist').value;
+        fsupportpos = hingePos, rsupportpos = rollPos;
         var uvlstart = UVLstart, uvlend = UVLend, uvlstartmag = uvlMinVal, uvlendmag = uvlMaxVal;
         var udlstart = UDLstart, udlend = UDLend, udlmag = UDLmagnitude;
         var pointdist = fixedForcePosition, pointmag =fixedForceMagnitude, pointinc = theta;
@@ -533,54 +534,65 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
         var condensedudlpos = 0, condensedudlmag = 0;
         var momentfsupport = 0;
 
-        if(uvlend > uvlstart) condenseduvlpos = 1/3 * (uvlend - uvlstart) + uvlstart;
-        else condenseduvlpos = 2/3 * (uvlstart - uvlend) + uvlend;
+        if(uvlend > uvlstart) condenseduvlpos = 2/3 * (uvlend - uvlstart) + uvlstart;
+        else condenseduvlpos = 1/3 * (uvlstart - uvlend) + uvlend;
+        console.log(condenseduvlpos);
 
         condenseduvlmag = 1/2 * Math.abs(uvlend - uvlstart) * (uvlendmag - uvlstartmag);
+        console.log(condenseduvlmag);
 
         condenseduvlbasemag = Math.abs(uvlend - uvlstart)* uvlstartmag;
+        console.log(condenseduvlbasemag);
 
-        condenseduvlbasepos = 1/2 * Math.abs(uvlend - uvlstart) + Math.min(uvlstart,uvlend);
+        condenseduvlbasepos = 1/20 * (uvlend + uvlstart);
+        console.log(condenseduvlbasepos);
 
         condensedudlmag = (udlend - udlstart) * udlmag;
+        console.log(condensedudlmag);
 
-        condensedudlpos = (udlend - udlstart) * 1/2 + udlstart;
+        condensedudlpos = (udlend + udlstart) * 1/20;
+        console.log(UDLend,UDLstart,udlend,udlstart,condensedudlpos);
 
-        momentfsupport = (condensedudlpos - fsupportpos)*condensedudlmag + (condenseduvlpos - fsupportpos)*condenseduvlmag + (condenseduvlbasepos - fsupportpos)*condenseduvlbasemag + (pointdist - fsupportpos)*pointmag*Math.sin(pointinc);
+        momentfsupport = (fsupportpos - condensedudlpos)*condensedudlmag + (fsupportpos - condenseduvlpos)*condenseduvlmag + (fsupportpos - condenseduvlbasepos)*condenseduvlbasemag + (fsupportpos - pointdist)*pointmag*Math.sin(pointinc);
+        console.log(momentfsupport);
 
-        rsupportmag = momentfsupport/(fsupportpos - rsupportpos);
+        rsupportmag = momentfsupport/(rsupportpos - fsupportpos);
+        console.log(rsupportmag);
 
         fsupportmag = -(rsupportmag + condensedudlmag + condenseduvlbasemag + condenseduvlmag + pointmag*Math.sin(pointinc))
 
         console.log(rsupportmag,fsupportmag)
     }
 
-    var xValues = [];
-    var yValues = [];
-    var MomentValues = []
+    var xValues = [beamLength];
+    var yValues = [0];
+    var MomentValues = [0]
 
     for (var x = beamLength; x >= 0 ; x -= 0.0625) {
     xValues.push(x);
-    MomentValues.push(CurrentMoment);
     if(x==rsupportpos) CurrentForce += rsupportmag;
     if(x==fsupportpos) CurrentForce += fsupportmag;
     if(x==fixedForcePosition) CurrentForce += fixedForceMagnitude*Math.sin(theta);
-    if(x >= UDLstart && x <= UDLend) CurrentForce += UDLmagnitude*0.0625;
-    if(x >= UVLUDLstart && x <= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.0625;
-    else if(x <= UVLUDLstart && x >= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.0625;
-    if(x >= UVLstart && x <= UVLend) CurrentForce += ((x+0.03125) - UVLstart)*((UVLmagnitude)/(UVLend - UVLstart))*0.0625;
-    else if(x >= UVLend && x <= UVLstart) CurrentForce += ((x+0.03125) - UVLend)*((UVLmagnitude)/(UVLstart - UVLend))*0.0625;
-    yValues.push(-CurrentForce);
-    console.log(CurrentForce,x);
-    CurrentMoment += CurrentForce*0.0625;
+    if(x >= UDLstart && x < UDLend) CurrentForce += UDLmagnitude*0.0625;
+    if(x >= UVLUDLstart && x < UVLUDLend) CurrentForce += UVLUDLmagnitude*0.0625;
+    else if(x < UVLUDLstart && x >= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.0625;
+    if(x >= UVLstart && x < UVLend) CurrentForce += ((x+0.03125) - UVLstart)*((UVLmagnitude)/(UVLend - UVLstart))*0.0625;
+    else if(x >= UVLend && x < UVLstart) CurrentForce += ((x+0.03125) - UVLend)*((UVLmagnitude)/(UVLstart - UVLend))*0.0625;
+    yValues.push(CurrentForce);
+    // console.log(CurrentForce,x);
+    CurrentMoment += -CurrentForce*0.0625;
+    MomentValues.push(CurrentMoment);
     }
+
+    let shearMin = 0;
+    let bendingMax = 0;
+    xValues.push(0);
+    yValues.push(0);
+    MomentValues.push(0);
 
     yValues.reverse()
     xValues.reverse()
     MomentValues.reverse()
-
-    let shearMin = Math.min(yValues).toFixed(2);
-    let bendingMax = Math.max(MomentValues).toFixed(2);
 
     var data = [{
     x: xValues,
@@ -626,8 +638,7 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     ],
     xaxis: {
         title: 'Beam Length',
-        rangemode: 'tozero',
-        autorange: true,
+        range: [-1,101],
         fixedrange: true,
         ticks: 'outside',
         dtick: 5
@@ -636,7 +647,7 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
         title: 'Shear Force',
         rangemode: 'tozero',
         autorange: true,
-        fixedrange: true
+        fixedrange: true,
     }
     };
 
@@ -686,9 +697,7 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     ],
     xaxis: {
         title: 'Beam Length',
-        rangemode: 'tozero',
-        autorange: true,
-        fixedrange: true,
+        range: [-1,101],
         ticks: 'outside',
         dtick: 5
     },
