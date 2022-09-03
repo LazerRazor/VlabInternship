@@ -586,9 +586,11 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
 
     let shearMin = 0;
     let bendingMax = 0;
-    xValues.push(0);
-    yValues.push(0);
-    MomentValues.push(0);
+    if (fsupportDistVal == 'slider-value') {
+        xValues.push(0);
+        yValues.push(0);
+        MomentValues.push(0);
+    }
 
     yValues.reverse()
     xValues.reverse()
