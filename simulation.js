@@ -1,6 +1,4 @@
-/* BEAM LENGTH CHANGE ON INPUT */
 
-// Text Input
 function handleWidthInput(input) {
     input.value = input.value.replace(/^1+/, '');
     input.previousElementSibling.value = input.value
@@ -488,12 +486,59 @@ function handleuvlMinSlider(input) {
 }
 
 // uvl Load setting after submit pressed.
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+document.getElementById("postLabButton").addEventListener("click", function(){
+
+    document.getElementsByClassName("postLabQuestions").height = "100%";
+    document.getElementById('uvlvalue').style.display = "none";
+    document.getElementById('postLabButton').style.display = "none";
+
+    var index = getRandomInt(data1[0].x.length);
+
+    var options = [data1[0].y[index], data1[0].y[index] - getRandomInt(1000),data1[0].y[index] + getRandomInt(1000),data1[0].y[index] - getRandomInt(10000)];
+    var options1 = [data[0].y[index], data[0].y[index] - getRandomInt(1000),data[0].y[index] + getRandomInt(1000),data[0].y[index] - getRandomInt(10000)];
+
+    let class1 = document.getElementById("postLabq1");
+    let class2 = document.getElementById("postLabq2");
+
+    document.getElementById("postLabq1").innerHTML = "What is the bending moment at distance " + data1[0].x[index] + "? ";
+    document.getElementById("postLabq2").innerHTML = "What is the bending moment at distance " + data1[0].x[index] + "? ";
+
+    let ul = document.createElement("ul");
+    let ul1 = document.createElement("ul");
+
+    options.forEach((item)=>{
+        let li = document.createElement("li");
+        li.innerText = item;
+        ul.appendChild(li);
+    })
+
+    options1.forEach((item)=>{
+        let li = document.createElement("li");
+        li.innerText = item;
+        ul1.appendChild(li);
+    })
+
+    class1.append(ul);
+    class2.append(ul1);
+});
+
+var data = Array();
+var data1 = Array();
+var layout = Object();
+var layout1 = Object();
+
 document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     document.getElementById('uvlMin').setAttribute('disabled','');
     document.getElementById('uvlMin').style.opacity = '0.5';
     document.getElementById('uvlMinVal').setAttribute('disabled','');
     document.getElementById('uvlMinVal').style.opacity = '0.5';
     document.getElementById("uvlMinSubmit").setAttribute('disabled','');
+    document.getElementById("postLabButton").style.opacity = 1;
+
     // Beam Length
     var beamLength = document.getElementById('beamLength').value;
 
@@ -596,13 +641,13 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     xValues.reverse()
     MomentValues.reverse()
 
-    var data = [{
+    data = [{
     x: xValues,
     y: yValues,
     mode:"lines"
     }];
 
-    var layout = {
+    layout = {
     title: "Shear Force Diagram",
     hovermode: false,
     margin: {
@@ -655,13 +700,13 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
 
     Plotly.newPlot("shear", data, layout, {displayModeBar: false});
 
-    var data = [{
+    data1 = [{
         x: xValues,
         y: MomentValues,
         mode:"lines"
     }];
 
-    var layout = {
+    layout1 = {
     title: "Bending Moment Diagram",
     hovermode: false,
     margin: {
@@ -711,5 +756,7 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     }
     };
 
-    Plotly.newPlot("bending", data, layout, {displayModeBar: false});
+    Plotly.newPlot("bending", data1, layout1, {displayModeBar: false});
 });
+
+

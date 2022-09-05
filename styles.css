@@ -330,3 +330,44 @@ input::-webkit-inner-spin-button {
     top: calc(22%);
     margin-left: -15px;
 }
+
+#postLabButton
+{
+    height: 5vh;
+    opacity: 0;
+    width: 60%;
+    position: relative;
+    left: 20%;
+    top: 50%;
+    border-radius: 2.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2vw;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: green;
+    background-color:#F5E8C7;
+    cursor: grab;
+}
+
+.postLabQuestions
+{
+    height: 0%;
+    width:100%;
+    display: flex;
+    position: relative;
+    top: 15vh;
+    gap: 5vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+    color: white;
+}
+
+li{
+    padding-top: 10px;
+}
