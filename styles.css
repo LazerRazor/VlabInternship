@@ -338,7 +338,7 @@ input::-webkit-inner-spin-button {
     width: 60%;
     position: relative;
     left: 20%;
-    top: 50%;
+    top: 10vh;
     border-radius: 2.5vh;
     display: flex;
     justify-content: center;
@@ -357,12 +357,12 @@ input::-webkit-inner-spin-button {
     width:100%;
     display: flex;
     position: relative;
-    top: 15vh;
+    top: 20vh;
     gap: 5vh;
+    padding: 10px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 100%;
     color: white;
