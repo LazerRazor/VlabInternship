@@ -692,7 +692,6 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     },
     yaxis: {
         title: 'Shear Force',
-        rangemode: 'tozero',
         autorange: true,
         fixedrange: true,
     }
@@ -750,7 +749,6 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     },
     yaxis: {
         title: 'Bending Moment',
-        rangemode: 'tozero',
         autorange: true,
         fixedrange: true
     }
