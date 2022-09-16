@@ -505,7 +505,7 @@ document.getElementById("postLabButton").addEventListener("click", function(){
     let class2 = document.getElementById("postLabq2");
 
     document.getElementById("postLabq1").innerHTML = "What is the bending moment at distance " + data1[0].x[index] + "? ";
-    document.getElementById("postLabq2").innerHTML = "What is the bending moment at distance " + data1[0].x[index] + "? ";
+    document.getElementById("postLabq2").innerHTML = "What is the shear force at distance " + data1[0].x[index] + "? ";
 
     let ul = document.createElement("ul");
     let ul1 = document.createElement("ul");
