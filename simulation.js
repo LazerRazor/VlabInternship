@@ -621,8 +621,10 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     if(x >= UDLstart && x < UDLend) CurrentForce += UDLmagnitude*0.0625;
     if(x >= UVLUDLstart && x < UVLUDLend) CurrentForce += UVLUDLmagnitude*0.0625;
     else if(x < UVLUDLstart && x >= UVLUDLend) CurrentForce += UVLUDLmagnitude*0.0625;
+    // if(x >= UVLstart && x < UVLend) CurrentForce += ((x+0.03125) - UVLstart)*((UVLmagnitude)/(UVLend - UVLstart))*0.0625;
+    // else if(x >= UVLend && x < UVLstart) CurrentForce += ((x+0.03125) - UVLend)*((UVLmagnitude)/(UVLstart - UVLend))*0.0625;
     if(x >= UVLstart && x < UVLend) CurrentForce += ((x+0.03125) - UVLstart)*((UVLmagnitude)/(UVLend - UVLstart))*0.0625;
-    else if(x >= UVLend && x < UVLstart) CurrentForce += ((x+0.03125) - UVLend)*((UVLmagnitude)/(UVLstart - UVLend))*0.0625;
+    else if(x >= UVLend && x < UVLstart) CurrentForce += (UVLstart-(x+0.03125))*((UVLmagnitude)/(UVLstart - UVLend))*0.0625;
     yValues.push(CurrentForce);
     // console.log(CurrentForce,x);
     CurrentMoment += -CurrentForce*0.0625;
