@@ -486,8 +486,10 @@ function handleuvlMinSlider(input) {
 }
 
 // uvl Load setting after submit pressed.
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+function getRandomInt() {
+    console.log(items)
+    // return Math.floor(Math.random() * max);
+    return items[Math.floor(Math.random()*items.length)];
   }
 
 document.getElementById("postLabButton").addEventListener("click", function(){
@@ -495,11 +497,28 @@ document.getElementById("postLabButton").addEventListener("click", function(){
     document.getElementsByClassName("postLabQuestions").height = "100%";
     document.getElementById('uvlvalue').style.display = "none";
     document.getElementById('postLabButton').style.display = "none";
+    console.log(data1[0].x.length)
+    // var index = getRandomInt(data1[0].x.length);
+    var t = getRandomInt()
+    console.log(t)
+    var index = t*16;
+    console.log(index)
 
-    var index = getRandomInt(data1[0].x.length);
+    var options = [data1[0].y[index], data1[0].y[index] - Math.floor(Math.random()*1000),data1[0].y[index] + Math.floor(Math.random()*1000),data1[0].y[index] - Math.floor(Math.random()*10000)];
+    var options1 = [data[0].y[index], data[0].y[index] - Math.floor(Math.random()*1000),data[0].y[index] + Math.floor(Math.random()*1000),data[0].y[index] - Math.floor(Math.random()*10000)];
 
-    var options = [data1[0].y[index], data1[0].y[index] - getRandomInt(1000),data1[0].y[index] + getRandomInt(1000),data1[0].y[index] - getRandomInt(10000)];
-    var options1 = [data[0].y[index], data[0].y[index] - getRandomInt(1000),data[0].y[index] + getRandomInt(1000),data[0].y[index] - getRandomInt(10000)];
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array
+    }
+
+    options = shuffleArray(options)
+    options1 = shuffleArray(options1)
 
     let class1 = document.getElementById("postLabq1");
     let class2 = document.getElementById("postLabq2");
@@ -511,15 +530,29 @@ document.getElementById("postLabButton").addEventListener("click", function(){
     let ul1 = document.createElement("ul");
 
     options.forEach((item)=>{
-        let li = document.createElement("li");
-        li.innerText = item;
-        ul.appendChild(li);
+        let li = document.createElement("input");
+        let liName = document.createElement("label")
+        li.setAttribute('type','radio')
+        li.setAttribute('name','options')
+        li.setAttribute('id',item)
+        li.setAttribute('value',item)
+        liName.innerText = item + "\n"
+        liName.setAttribute("for",item)
+        ul.appendChild(li)
+        ul.appendChild(liName)
     })
 
     options1.forEach((item)=>{
-        let li = document.createElement("li");
-        li.innerText = item;
-        ul1.appendChild(li);
+        let li = document.createElement("input");
+        let liName = document.createElement("label")
+        li.setAttribute('type','radio')
+        li.setAttribute('name','options1')
+        li.setAttribute('id',item)
+        li.setAttribute('value',item)
+        liName.innerText = item + "\n"
+        liName.setAttribute("for",item)
+        ul1.appendChild(li)
+        ul1.appendChild(liName)
     })
 
     class1.append(ul);
@@ -530,7 +563,7 @@ var data = Array();
 var data1 = Array();
 var layout = Object();
 var layout1 = Object();
-
+var items = Array();
 document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     document.getElementById('uvlMin').setAttribute('disabled','');
     document.getElementById('uvlMin').style.opacity = '0.5';
@@ -563,6 +596,7 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     var UDLstart = udlMinDist, UDLend = udlMaxDist, UDLmagnitude = udl;
     var UVLstart = uvlMinValDist, UVLend = uvlMaxValDist, UVLmagnitude = (uvlMaxVal-uvlMinVal);
     var UVLUDLstart = uvlMinValDist, UVLUDLend = uvlMaxValDist, UVLUDLmagnitude = uvlMinVal;
+    items = [uvlMaxValDist,uvlMinValDist,udlMinDist,udlMaxDist,pointLoadDist];
     var CurrentForce = 0, CurrentMoment = 0;
     var fsupportmag = 0, rsupportmag = 0, fsupportpos = 0, rsupportpos = 0;
     const fsupportDistVal = document.getElementById("fsupportDistVal").className;
