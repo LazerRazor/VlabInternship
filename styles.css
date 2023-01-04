@@ -100,6 +100,7 @@ a
     color: white;
     }
     .slider input[type="range"] {
+    appearance: none !important;
     -webkit-appearance:none !important;
     width: 40%;
     height: 2.5px;
@@ -358,11 +359,12 @@ input::-webkit-inner-spin-button {
     display: flex;
     position: relative;
     top: 20vh;
+    left: 5vh;
     gap: 5vh;
     padding: 10px;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     font-family: 'Roboto', sans-serif;
     font-size: 100%;
     color: white;

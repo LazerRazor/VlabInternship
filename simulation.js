@@ -501,7 +501,11 @@ document.getElementById("postLabButton").addEventListener("click", function(){
     // var index = getRandomInt(data1[0].x.length);
     var t = getRandomInt()
     console.log(t)
-    var index = t*16;
+    if ((t+1)*16>data1[0].x.length){
+        var index = (t-1)*16;
+    } else {
+        var index = (t+1)*16;
+    }
     console.log(index)
 
     var options = [data1[0].y[index], data1[0].y[index] - Math.floor(Math.random()*1000),data1[0].y[index] + Math.floor(Math.random()*1000),data1[0].y[index] - Math.floor(Math.random()*10000)];
@@ -685,40 +689,40 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
 
     layout = {
     title: "Shear Force Diagram",
-    hovermode: false,
+    hovermode: true,
     margin: {
         b: 50,
         l: 50,
         r: 20,
         t: 40
     },
-    annotations: [
-        {
-        x: 0,
-        y: shearMin,
-        xref: 'x',
-        yref: 'y',
-        showarrow: true,
-        text: shearMin,
-        font: {
-            family: 'Courier New, monospace',
-            size: 16,
-            color: '#ffffff'
-          },
-          align: 'center',
-          arrowhead: 2,
-          arrowsize: 1,
-          arrowwidth: 2,
-          arrowcolor: '#636363',
-          ax: 20,
-          ay: -30,
-          bordercolor: '#c7c7c7',
-          borderwidth: 2,
-          borderpad: 4,
-          bgcolor: '#ff7f0e',
-          opacity: 0.8
-        }
-    ],
+    // annotations: [
+    //     {
+    //     x: 0,
+    //     y: shearMin,
+    //     xref: 'x',
+    //     yref: 'y',
+    //     showarrow: true,
+    //     text: shearMin,
+    //     font: {
+    //         family: 'Courier New, monospace',
+    //         size: 16,
+    //         color: '#ffffff'
+    //       },
+    //       align: 'center',
+    //       arrowhead: 2,
+    //       arrowsize: 1,
+    //       arrowwidth: 2,
+    //       arrowcolor: '#636363',
+    //       ax: 20,
+    //       ay: -30,
+    //       bordercolor: '#c7c7c7',
+    //       borderwidth: 2,
+    //       borderpad: 4,
+    //       bgcolor: '#ff7f0e',
+    //       opacity: 0.8
+    //     }
+    // ],
     xaxis: {
         title: 'Beam Length',
         range: [-1,101],
@@ -743,40 +747,40 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
 
     layout1 = {
     title: "Bending Moment Diagram",
-    hovermode: false,
+    hovermode: true,
     margin: {
         b: 50,
         l: 50,
         r: 20,
         t: 40
     },
-    annotations: [
-        {
-        x: 0,
-        y: bendingMax,
-        xref: 'x',
-        yref: 'y',
-        showarrow: true,
-        text: bendingMax,
-        font: {
-            family: 'Courier New, monospace',
-            size: 16,
-            color: '#ffffff'
-          },
-          align: 'center',
-          arrowhead: 2,
-          arrowsize: 1,
-          arrowwidth: 2,
-          arrowcolor: '#636363',
-          ax: 20,
-          ay: -30,
-          bordercolor: '#c7c7c7',
-          borderwidth: 2,
-          borderpad: 4,
-          bgcolor: '#ff7f0e',
-          opacity: 0.8
-        }
-    ],
+    // annotations: [
+    //     {
+    //     x: 0,
+    //     y: bendingMax,
+    //     xref: 'x',
+    //     yref: 'y',
+    //     showarrow: true,
+    //     text: bendingMax,
+    //     font: {
+    //         family: 'Courier New, monospace',
+    //         size: 16,
+    //         color: '#ffffff'
+    //       },
+    //       align: 'center',
+    //       arrowhead: 2,
+    //       arrowsize: 1,
+    //       arrowwidth: 2,
+    //       arrowcolor: '#636363',
+    //       ax: 20,
+    //       ay: -30,
+    //       bordercolor: '#c7c7c7',
+    //       borderwidth: 2,
+    //       borderpad: 4,
+    //       bgcolor: '#ff7f0e',
+    //       opacity: 0.8
+    //     }
+    // ],
     xaxis: {
         title: 'Beam Length',
         range: [-1,101],
