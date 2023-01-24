@@ -492,6 +492,8 @@ function getRandomInt() {
     return items[Math.floor(Math.random()*items.length)];
   }
 
+var newindex, newindex1;
+
 document.getElementById("postLabButton").addEventListener("click", function(){
 
     document.getElementsByClassName("postLabQuestions").height = "100%";
@@ -508,8 +510,8 @@ document.getElementById("postLabButton").addEventListener("click", function(){
     }
     console.log(index)
 
-    var options = [data1[0].y[index], data1[0].y[index] - Math.floor(Math.random()*1000),data1[0].y[index] + Math.floor(Math.random()*1000),data1[0].y[index] - Math.floor(Math.random()*10000)];
-    var options1 = [data[0].y[index], data[0].y[index] - Math.floor(Math.random()*1000),data[0].y[index] + Math.floor(Math.random()*1000),data[0].y[index] - Math.floor(Math.random()*10000)];
+    var options1 = [data1[0].y[index], data1[0].y[index] - Math.floor(Math.random()*1000),data1[0].y[index] + Math.floor(Math.random()*1000),data1[0].y[index] - Math.floor(Math.random()*10000)];
+    var options = [data[0].y[index], data[0].y[index] - Math.floor(Math.random()*1000),data[0].y[index] + Math.floor(Math.random()*1000),data[0].y[index] - Math.floor(Math.random()*10000)];
 
     function shuffleArray(array) {
         for (var i = array.length - 1; i > 0; i--) {
@@ -524,11 +526,12 @@ document.getElementById("postLabButton").addEventListener("click", function(){
     options = shuffleArray(options)
     options1 = shuffleArray(options1)
 
+    let class0 = document.getElementById("postLabQuestions");
     let class1 = document.getElementById("postLabq1");
     let class2 = document.getElementById("postLabq2");
 
-    document.getElementById("postLabq1").innerHTML = "What is the bending moment at distance " + data1[0].x[index] + "? ";
-    document.getElementById("postLabq2").innerHTML = "What is the shear force at distance " + data1[0].x[index] + "? ";
+    document.getElementById("postLabq2").innerHTML = "What is the bending moment at distance " + data[0].x[index] + "? ";
+    document.getElementById("postLabq1").innerHTML = "What is the shear force at distance " + data1[0].x[index] + "? ";
 
     let ul = document.createElement("ul");
     let ul1 = document.createElement("ul");
@@ -561,6 +564,40 @@ document.getElementById("postLabButton").addEventListener("click", function(){
 
     class1.append(ul);
     class2.append(ul1);
+
+    document.getElementById("postSubmit").removeAttribute('hidden','');
+    newindex = data[0].y[index], newindex1 = data1[0].y[index];
+});
+
+let ans = 'false'
+let ans1 = 'false'
+document.getElementById("postSubmit").addEventListener("click", function(){
+    var ele = document.getElementsByName('options');
+    var ele1 = document.getElementsByName('options1');
+    console.log(newindex)
+    console.log(newindex1)
+    for(i = 0; i < 4; i++) {
+        if(ele[i].checked){
+            var nvalue = document.querySelector('label[for="'+ele[i].id+'"]').innerHTML;
+            var newvalue = parseFloat(nvalue)
+            console.log(newvalue);
+            console.log(newindex)
+            if(Math.abs(newvalue-newindex)<=1){
+                ans = 'true'
+            }}
+        if(ele1[i].checked){
+            var nvalue1 = document.querySelector('label[for="'+ele1[i].id+'"]').innerHTML;
+            var newvalue1 = parseFloat(nvalue1)
+            console.log(newvalue1);
+            console.log(newindex1)
+            if(Math.abs(newvalue1-newindex1)<=1){
+                ans1 = 'true'
+            }}
+    }
+    if (ans=='true' && ans1=='true'){
+        document.getElementById("newText").textContent = "Correct!"
+    }
+    document.getElementById("newText").removeAttribute('hidden','')
 });
 
 var data = Array();

@@ -373,3 +373,18 @@ input::-webkit-inner-spin-button {
 li{
     padding-top: 10px;
 }
+
+#postSubmit {
+    width: 4rem;
+    height: 1.5rem !important;
+    color: white;
+    background-color: #59CE8F;
+    border: none;
+    border-radius: 1rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#postSubmit:disabled {
+    opacity: 0.5;
+}
