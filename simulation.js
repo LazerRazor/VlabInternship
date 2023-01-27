@@ -543,7 +543,7 @@ document.getElementById("postLabButton").addEventListener("click", function(){
         li.setAttribute('name','options')
         li.setAttribute('id',item)
         li.setAttribute('value',item)
-        liName.innerText = item + "\n"
+        liName.innerText = item.toFixed(2) + "\n"
         liName.setAttribute("for",item)
         ul.appendChild(li)
         ul.appendChild(liName)
@@ -556,7 +556,7 @@ document.getElementById("postLabButton").addEventListener("click", function(){
         li.setAttribute('name','options1')
         li.setAttribute('id',item)
         li.setAttribute('value',item)
-        liName.innerText = item + "\n"
+        liName.innerText = item.toFixed(2) + "\n"
         liName.setAttribute("for",item)
         ul1.appendChild(li)
         ul1.appendChild(liName)
@@ -596,6 +596,8 @@ document.getElementById("postSubmit").addEventListener("click", function(){
     }
     if (ans=='true' && ans1=='true'){
         document.getElementById("newText").textContent = "Correct!"
+    } else {
+        document.getElementById("newText").textContent = "Wrong!"
     }
     document.getElementById("newText").removeAttribute('hidden','')
 });
