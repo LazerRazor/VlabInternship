@@ -473,7 +473,7 @@ function handleuvlMinInput(input) {
     document.getElementById("uvlminline").style.height = input.value + "px";
     document.getElementById("uvlrectangle").style.height = input.value + "px";
     document.getElementById("uvltriangle").style.height = (document.getElementById('uvlMax').value-input.value) + "px";
-    document.getElementById("uvltriangle").style.bottom = "calc(" + input.value + "px + 80%)";
+    document.getElementById("uvltriangle").style.bottom = "calc(" + input.value + "px + 70%)";
 }
 
 // Slider Input
@@ -482,7 +482,7 @@ function handleuvlMinSlider(input) {
     document.getElementById("uvlminline").style.height = input.value + "px";
     document.getElementById("uvlrectangle").style.height = input.value + "px";
     document.getElementById("uvltriangle").style.height = (document.getElementById('uvlMax').value-input.value) + "px";
-    document.getElementById("uvltriangle").style.bottom = "calc(" + input.value + "px + 80%)";
+    document.getElementById("uvltriangle").style.bottom = "calc(" + input.value + "px + 70%)";
 }
 
 // uvl Load setting after submit pressed.

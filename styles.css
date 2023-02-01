@@ -33,7 +33,7 @@ a
     height: 15vh;
     width: 80%;
     left: 10%;
-    top:22.5vh;
+    top:2vh;
     border-radius: 5vh;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -41,6 +41,43 @@ a
     color: #F5E8C7;
     text-align: center;
     padding-top:5vh;
+}
+
+.logo{
+    position: absolute;
+    max-height: 40vh;
+    top: -12.5vh;
+    right: 10vh;
+}
+
+.college{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 5.5vw;
+    align-self: center;
+    margin-top: 3vh;
+    color: #224B0C;
+    text-decoration:underline;
+}
+
+.college-1{
+    position: absolute;
+    top: 3vh;
+    left: 7.5vh;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 3.5vw;
+    color: #224B0C;
+}
+
+.title{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 3.5vw;
+    align-self: center;
+    margin-top: 1vh;
+    color: #224B0C;
+    font-style: italic;
 }
 
 .card:hover
@@ -60,9 +97,9 @@ a
     position: relative;
     display: flex;
     flex-direction: column;
-    height : 75vh;
+    height : 65vh;
     left: 2.5%;
-    top: 5vh;
+    top: 15vh;
     width: 30%;
     border-radius: 5vh;
     background: #224B0C;
@@ -71,8 +108,8 @@ a
 
 .display{
     position: relative;
-    height : 80vh;
-    top: 5vh;
+    height : 70vh;
+    top: 15vh;
     width: 60%;
     border-radius: 5vh;
     background: #224B0C;
@@ -163,7 +200,7 @@ input::-webkit-inner-spin-button {
 .beam {
     position: absolute;
     margin-left: 0px;
-    top: 20%;
+    top: 30%;
     height: 2.5vh;
     width: 0px;
 }
@@ -172,7 +209,7 @@ input::-webkit-inner-spin-button {
     position: absolute;
     width: 20px;
     margin-left: -10px;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .line {
@@ -180,7 +217,7 @@ input::-webkit-inner-spin-button {
     width: 2.5px;
     margin-left: 1.25 px;
     height: 0px;
-    bottom: calc(80%);
+    bottom: calc(70%);
     border-radius: 2.5px;
 }
 
@@ -191,33 +228,33 @@ input::-webkit-inner-spin-button {
 .udlminpointer {
     width: 20px;
     margin-left: -10px;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .udlmaxpointer {
     width: 20px;
     margin-left: -10px;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .udlminline {
     width: 2px;
     margin-left: -1px;
     height: 0px;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .udlmaxline {
     width: 2px;
     margin-left: -1px;
     height: 0px;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .udlarea {
     width: 0;
     height: 0;
-    bottom: 80%;
+    bottom: 70%;
 }
 
 .uvlimg {
@@ -227,39 +264,39 @@ input::-webkit-inner-spin-button {
 .uvlminpointer {
     width: 20px;
     margin-left: -10px;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .uvlmaxpointer {
     width: 20px;
     margin-left: -10px;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .uvlminline {
     width: 2px;
     margin-left: -1px;
     height: 0px;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .uvlmaxline {
     width: 2px;
     margin-left: -1px;
     height: 0px;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .uvlrectangle {
     width: 0;
     height: 0;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .uvltriangle {
     width: 0;
     height: 0;
-    bottom: calc(80%);
+    bottom: calc(70%);
 }
 
 .uvl-value input[type="range"] {
@@ -320,7 +357,7 @@ input::-webkit-inner-spin-button {
     position: absolute;
     width: 30px;
     height: 30px;
-    top: calc(22%);
+    top: calc(32%);
     margin-left: -15px;
 }
 
@@ -328,7 +365,7 @@ input::-webkit-inner-spin-button {
 {
     position: absolute;
     width: 30px;
-    top: calc(22%);
+    top: calc(32%);
     margin-left: -15px;
 }
 
