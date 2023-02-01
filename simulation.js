@@ -647,10 +647,10 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     if (fsupportDistVal == 'slider-value') {
         let hingePos = document.getElementById('fsupportDist').value;
         let rollPos = document.getElementById('rsupportDist').value;
-        fsupportpos = hingePos, rsupportpos = rollPos;
-        var uvlstart = UVLstart, uvlend = UVLend, uvlstartmag = uvlMinVal, uvlendmag = uvlMaxVal;
-        var udlstart = UDLstart, udlend = UDLend, udlmag = UDLmagnitude;
-        var pointdist = fixedForcePosition, pointmag =fixedForceMagnitude, pointinc = theta;
+        fsupportpos = parseInt(hingePos), rsupportpos = parseInt(rollPos);
+        var uvlstart = parseInt(UVLstart), uvlend = parseInt(UVLend), uvlstartmag = parseInt(uvlMinVal), uvlendmag = parseInt(uvlMaxVal);
+        var udlstart = parseInt(UDLstart), udlend = parseInt(UDLend), udlmag = parseInt(UDLmagnitude);
+        var pointdist = parseInt(fixedForcePosition), pointmag = parseInt(fixedForceMagnitude), pointinc = parseInt(theta);
 
         var condenseduvlpos = 0, condenseduvlbasepos = 0, condenseduvlmag = 0, condenseduvlbasemag = 0;
         var condensedudlpos = 0, condensedudlmag = 0;
@@ -666,13 +666,13 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
         condenseduvlbasemag = Math.abs(uvlend - uvlstart)* uvlstartmag;
         console.log(condenseduvlbasemag);
 
-        condenseduvlbasepos = 1/20 * (uvlend + uvlstart);
+        condenseduvlbasepos = 1/2 * (uvlend + uvlstart);
         console.log(condenseduvlbasepos);
 
         condensedudlmag = (udlend - udlstart) * udlmag;
-        console.log(condensedudlmag);
+        console.log(condensedudlmag,UDLend,udlend,UDLstart,udlstart, parseInt(udlend)+parseInt(udlstart));
 
-        condensedudlpos = (udlend + udlstart) * 1/20;
+        condensedudlpos = (udlend + udlstart) * 1/2;
         console.log(UDLend,UDLstart,udlend,udlstart,condensedudlpos);
 
         momentfsupport = (fsupportpos - condensedudlpos)*condensedudlmag + (fsupportpos - condenseduvlpos)*condenseduvlmag + (fsupportpos - condenseduvlbasepos)*condenseduvlbasemag + (fsupportpos - pointdist)*pointmag*Math.sin(pointinc);
