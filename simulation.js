@@ -1,4 +1,9 @@
 
+/**
+ * If the input is less than 1, set it to 1. If the input is greater than 100, set it to 100. If the
+ * input is a number, set the width of the beam to 5 times the input.
+ * @param input - The input element that is being changed.
+ */
 function handleWidthInput(input) {
     input.value = input.value.replace(/^1+/, '');
     input.previousElementSibling.value = input.value
@@ -763,14 +768,14 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     //     }
     // ],
     xaxis: {
-        title: 'Beam Length',
+        title: 'Beam Length (metres)',
         range: [-1,101],
         fixedrange: true,
         ticks: 'outside',
         dtick: 5
     },
     yaxis: {
-        title: 'Shear Force',
+        title: 'Shear Force (Newtons)',
         autorange: true,
         fixedrange: true,
     }
@@ -821,13 +826,13 @@ document.getElementById("uvlMinSubmit").addEventListener("click", function () {
     //     }
     // ],
     xaxis: {
-        title: 'Beam Length',
+        title: 'Beam Length (metres)',
         range: [-1,101],
         ticks: 'outside',
         dtick: 5
     },
     yaxis: {
-        title: 'Bending Moment',
+        title: 'Bending Moment (Newton-metres)',
         autorange: true,
         fixedrange: true
     }
