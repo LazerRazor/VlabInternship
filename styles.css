@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 *{
     margin: 0;
     padding: 0;
 }
 body
 {
-    background: #FFFDE3;
+    background:linear-gradient(50deg, rgb(4, 1, 189) 0%, rgb(2, 1, 46) 100%);
+    height: 100vh;
+
 }
 
 a
@@ -19,28 +22,37 @@ a
     width : 95%;
     left: 2.5%;
     top: 5vh;
-    border-radius: 5vh;
-    background-color: #CFE8A9;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(1, 2, 18, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     display: flex;
     flex-direction: column;
-    gap:5vh;
+    justify-content: space-around;
 }
 
 .card
 {
-    background: #224B0C;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(1, 2, 18, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     position: relative;
-    height: 15vh;
-    width: 80%;
-    left: 10%;
-    top:2vh;
-    border-radius: 5vh;
+    height: 6rem;
+    width: 46%;
+    left: 27%;
+    border-radius: 15px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 5vw;
-    color: #F5E8C7;
+    font-weight:400;
+    font-size: 2rem;
+    color: white;
     text-align: center;
-    padding-top:5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo{
@@ -53,11 +65,9 @@ a
 .college{
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
-    font-size: 5.5vw;
+    font-size: 3.5rem;
     align-self: center;
-    margin-top: 3vh;
-    color: #224B0C;
-    text-decoration:underline;
+    color: white;
 }
 
 .college-1{
@@ -66,23 +76,21 @@ a
     left: 7.5vh;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 3.5vw;
-    color: #224B0C;
+    font-size: 2.75rem;
+    color: white;
 }
 
 .title{
     font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 3.5vw;
+    font-weight: 400;
+    font-size: 2.5rem;
     align-self: center;
-    margin-top: 1vh;
-    color: #224B0C;
-    font-style: italic;
+    color: white;
 }
 
 .card:hover
 {
-    background-color: #59CE8F;
+    background-color: rgb(22, 22, 213);
 }
 
 .playground
@@ -97,22 +105,28 @@ a
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     height : 65vh;
     left: 2.5%;
-    top: 15vh;
     width: 30%;
-    border-radius: 5vh;
-    background: #224B0C;
-
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(1, 2, 18, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .display{
     position: relative;
     height : 70vh;
-    top: 15vh;
     width: 60%;
-    border-radius: 5vh;
-    background: #224B0C;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(1, 2, 18, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .slider {
@@ -149,8 +163,8 @@ a
     -webkit-appearance: none !important;
     width: 2vh;
     height:2vh;
-    border: 2px solid #CFE8A9;
-    background: #CFE8A9;
+    border: 2px solid white;
+    background: white;
     border-radius: 50%;
     cursor: pointer;
     }
@@ -185,7 +199,7 @@ input::-webkit-inner-spin-button {
     width: 94%;
     margin-top: 3vh;
     margin-left: 3%;
-    border-radius: 3vh;
+    border-radius: 15px;
 }
 
 .wall {
@@ -332,10 +346,10 @@ input::-webkit-inner-spin-button {
 }
 
 .slider input[type="submit"] {
-    width: 4rem;
-    height: 1.5rem;
+    width: 33%;
+    height: 2rem;
     color: white;
-    background-color: #59CE8F;
+    background-color: rgb(13, 80, 235);
     border: none;
     border-radius: 1rem;
     font-weight: bold;
@@ -347,9 +361,9 @@ input::-webkit-inner-spin-button {
 
 .text
 {
-    color: white;
-    padding-top: 15px;
+    padding-top: 10px;
     padding-bottom: 5px;
+    color: white;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -372,39 +386,36 @@ input::-webkit-inner-spin-button {
 
 #postLabButton
 {
-    height: 5vh;
+    padding:7px;
     opacity: 0;
-    width: 60%;
+    width: 60% !important;
     position: relative;
     left: 20%;
-    top: 10vh;
-    border-radius: 2.5vh;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2vw;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    color: green;
-    background-color:#F5E8C7;
+    color: white;
+    background-color:#0e2ee6;
     cursor: grab;
 }
 
 .postLabQuestions
 {
     height: 0%;
-    width:100%;
+    width:80%;
     display: flex;
     position: relative;
-    top: 20vh;
     left: 5vh;
     gap: 5vh;
-    padding: 10px;
     flex-direction: column;
     justify-content: center;
     align-items: left;
     font-family: 'Roboto', sans-serif;
-    font-size: 100%;
+    font-size: 1.2rem;
     color: white;
 }
 
@@ -413,16 +424,31 @@ li{
 }
 
 #postSubmit {
-    width: 4rem;
-    height: 1.5rem !important;
+    width: 33%;
+    padding: 5px;
     color: white;
-    background-color: #59CE8F;
+    background-color: rgb(13, 80, 235);
     border: none;
     border-radius: 1rem;
     font-weight: bold;
-    margin-left: 10px;
 }
 
 #postSubmit:disabled {
     opacity: 0.5;
 }
+.Selection{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.Header
+{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+

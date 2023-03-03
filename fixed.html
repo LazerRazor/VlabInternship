@@ -13,18 +13,20 @@
 </head>
 <body>
     <div class="mainCard">
-        <p class="college-1">Exp: Cantilever Beam - SFD & BMD</p>
-        <img class="logo" src="https://images.collegedunia.com/public/college_data/images/logos/1589376523Logo2x.png" alt="">            
+        <div class="Headers-2">
+            <p class="college-1">Cantilever Beam</p>
+            <img class="logo" src="https://images.collegedunia.com/public/college_data/images/logos/1589376523Logo2x.png" alt="">            
+        </div>
         <div class="playground">
             <div class="userSelection">
-                <div class="slider length-value" id="lengthvalue">
+                <div class="slider length-value polygon" id="lengthvalue">
                     <div class="text">Beam Length (metres) :</div>
                     <input type="range" id="beamLength" min="1" max="100" value="0" oninput=handleWidthSlider(this)>
                     <input type="number" id="beamLengthVal" value="0" min="1" max="100" class="slider-value" oninput=handleWidthInput(this)>
                     <input type="submit" value="Submit" id="beamSubmit" style="margin-left: 10px;">
                     <br>
                 </div>
-                <div class="slider pointload-value" id="pointloadvalue" style="display:none">
+                <div class="slider pointload-value polygon" id="pointloadvalue" style="display:none">
                     <div class="text">Position of Point Load (metres) :</div>
                     <input type="range" id="fsupportDistVal" class="noslider" style="display:none">
                     <input type="range" id="pointLoadDist" disabled min="0" max="100" value="0" oninput=handlePDistSlider(this)>
@@ -40,7 +42,7 @@
                     <input type="submit" disabled value="Submit" id="pointLoadSubmit" style="margin-left: 10px;">
                     <br>
                 </div>
-                <div class="slider udl-value"  id="udlvalue" style="display:none">
+                <div class="slider udl-value polygon"  id="udlvalue" style="display:none">
                     <div class="text">End Position of UDL (metres) :</div>
                     <input type="range" id="udlMaxDist" disabled min="0" max="100" value="0" oninput=handleudlMaxDistSlider(this)>
                     <input type="number" id="udlMaxDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleudlMaxDistInput(this)>
@@ -57,7 +59,7 @@
                     <input type="submit" disabled value="Submit" id="udlSubmit" style="margin-left: 10px;">
                     <br>
                 </div>
-                <div class="slider uvl-value"  id="uvlvalue" style="display:none">
+                <div class="slider uvl-value polygon"  id="uvlvalue" style="display:none">
                     <div class="text">Greater Magnitude Position of UVL (metres) :</div>
                     <input type="range" id="uvlMaxDist" disabled min="0" max="100" value="0" oninput=handleuvlMaxDistSlider(this)>
                     <input type="number" id="uvlMaxDistVal" disabled value="0" min="0" max="100" class="slider-value" oninput=handleuvlMaxDistInput(this)>
@@ -79,7 +81,7 @@
                     <input type="submit" disabled value="Submit" id="uvlMinSubmit" style="margin-left: 10px;">
                     <br>
                 </div>
-                <div hidden class="postLabQuestions" id="postLabQuestions">
+                <div hidden class="postLabQuestions polygon" id="postLabQuestions">
                     <div id="postLabq1">
                         
                     </div>
